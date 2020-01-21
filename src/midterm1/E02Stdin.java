@@ -6,6 +6,22 @@ public class E02Stdin {
 
     public static void main(String[] args) {
         /*
+         * Command Line Arguments
+         * 
+         * These come from the command-line arguments. To change these,
+         * in your top menu bar, click 'Run'->'Run Configurations...'
+         * Then a new box will pop up. Click on the 'arguments' tab.
+         * Then in the first box, under 'Program Arguments:' type in
+         * whichever arguments you would like.
+         * 
+         * Note that if you haven't given command line arguments, the below
+         * lines will cause this program to crash since args will not have
+         * any elements.
+         */
+        System.out.println(args[0]);
+        System.out.println(args[1]);
+
+        /*
          * The below scanner object allows us to read in from the user since
          * we created a new Scanner and passed in 'System.in'
          */
