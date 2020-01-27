@@ -3,6 +3,7 @@ package midterm1;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
@@ -29,7 +30,8 @@ public class E03HashMapHashSet {
             System.out.println(first + " and " + second
                     + " have the below friends in common:");
             Set<String> mutualFriends = friends.get(first);
-            System.out.println(mutualFriends.retainAll(friends.get(second)));
+            mutualFriends.retainAll(friends.get(second));
+            System.out.println(mutualFriends);
 
         }
         userInput.close();
@@ -44,16 +46,20 @@ public class E03HashMapHashSet {
         Map<String, Set<String>> friendMap = new HashMap<String, Set<String>>();
         try {
             Scanner fileScanner = new Scanner(new File(filename));
-            String key;
-            boolean insideSet = true;
+            String key = fileScanner.nextLine();
             while (fileScanner.hasNextLine()) {
-                String line = fileScanner.nextLine();
-                if (line.equals("")) {
-                    insideSet = false;
+                String friend = fileScanner.nextLine();
+                if (friend.equals("") && fileScanner.hasNext()) {
+                    key = fileScanner.nextLine();
                     continue;
                 }
-                if (insideSet) {
-                    friendMap.get(key).add(line);
+
+                if (friendMap.containsKey(key)) {
+                    friendMap.get(key).add(friend);
+                } else {
+                    Set<String> newSet = new HashSet<String>();
+                    newSet.add(friend);
+                    friendMap.put(key, newSet);
                 }
 
             }
