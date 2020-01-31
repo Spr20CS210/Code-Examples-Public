@@ -15,7 +15,13 @@ public class E05LargestDigit {
      * the largest single digit from n.
      */
     public static int largestDigit(int n) {
-        return 0;
+        if (n < 0) {
+            return largestDigit(-n);
+        } else if (n < 10) {
+            return n;
+        } else {
+            return Math.max(n % 10, largestDigit(n / 10));
+        }
     }
 
 }
