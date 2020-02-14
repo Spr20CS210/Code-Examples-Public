@@ -32,4 +32,8 @@ public class E07Dinosaur {
         System.out.println("Roar, I am dino.");
     }
 
+    public String toString() {
+        return this.name + " is " + this.height + " meters tall.";
+    }
+
 }

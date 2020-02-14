@@ -17,7 +17,8 @@ public class E07Book {
         numCopies++;
     }
 
-    public void setISBN(String newISBN) {
-        this.ISBN = newISBN;
+    public String getISBN() {
+        return ISBN;
     }
+
 }

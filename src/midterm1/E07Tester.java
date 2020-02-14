@@ -8,27 +8,27 @@ package midterm1;
 public class E07Tester {
 
     public static void main(String[] args) {
-        E07Dinosaur defaultDino = new E07Dinosaur();
-
-        E07Dinosaur specialDino = new E07Dinosaur(31.4, true, "TrexyPoo",
-                "Hoomans");
-
-        specialDino.setHeight(28.8);
-
-        E07Dinosaur.dinoRoar();
-
-        // E07Static first = new E07Static(10);
-        // System.out.println(first);
+        // E07Dinosaur defaultDino = new E07Dinosaur();
         //
-        // first.incrementInstanceInt();
-        // first.incrementStaticInt();
+        // E07Dinosaur specialDino = new E07Dinosaur(31.4, true, "TrexyPoo",
+        // "Hoomans");
         //
-        // E07Static second = new E07Static(5);
+        // specialDino.setHeight(28.8);
         //
-        // second.incrementStaticInt();
-        //
-        // System.out.println(first);
-        // System.out.println(second);
+        // System.out.println(defaultDino);
+
+        E07Static first = new E07Static(10);
+        System.out.println(first);
+
+        first.incrementInstanceInt();
+        E07Static.incrementStaticInt();
+
+        E07Static second = new E07Static(5);
+
+        E07Static.incrementStaticInt();
+
+        System.out.println(first);
+        System.out.println(second);
     }
 
 }

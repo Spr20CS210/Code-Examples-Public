@@ -17,7 +17,7 @@ public class E07Static {
         instanceInt++;
     }
 
-    public void incrementStaticInt() {
+    public static void incrementStaticInt() {
         staticInt++;
     }
 
