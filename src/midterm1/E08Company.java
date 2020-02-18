@@ -13,7 +13,23 @@ public class E08Company {
          * superclass of the actual (run-time) type 'Salesperson'.
          */
         Employee arjun = new Salesperson("Arjun", 42000, 40000);
-        
+
+        Employee[] array = new Employee[3];
+        array[0] = daniel;
+        array[1] = susan;
+        array[2] = arjun;
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println(array[i].getSalary());
+        }
+
+        System.out.println(susan instanceof Employee);
+        System.out.println(susan instanceof Salesperson);
+        System.out.println(daniel instanceof Employee);
+        System.out.println(daniel instanceof Salesperson);
+        System.out.println(arjun instanceof Employee);
+        System.out.println(arjun instanceof Salesperson);
+
         /*
          * The below gives an error since Salesperson is a subclass
          * of Employee.
