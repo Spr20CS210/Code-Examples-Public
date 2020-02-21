@@ -35,7 +35,6 @@ public class E08Company {
          * of Employee.
          */
         // Salesperson tyler = new Employee("Tyler", 32000);
-
         System.out.println(susan.getSalary());
         System.out.println(daniel.getSalary());
         /*

@@ -26,4 +26,15 @@ public class Salesperson extends Employee {
         return "Buy buy buy - NSync";
     }
 
+    public boolean equals(Object o) {
+        if (o instanceof Salesperson) {
+            Salesperson other = (Salesperson) o;
+            // name, salary, salesAmount
+            return super.equals(other)
+                    && this.salesAmount == other.salesAmount;
+        } else {
+            return false;
+        }
+    }
+
 }
