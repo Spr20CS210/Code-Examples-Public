@@ -15,7 +15,12 @@ public class MyArrayList {
     }
 
     public MyArrayList(MyArrayList other) {
-
+        this.size = other.size;
+        this.capacity = other.capacity;
+        array = new int[capacity];
+        for (int i = 0; i < size; i++) {
+            array[i] = other.array[i];
+        }
     }
 
     private void growArray() {
@@ -29,28 +34,39 @@ public class MyArrayList {
     }
 
     public void add(int value) {
-
+        add(size, value);
     }
 
     // Do this one first, and then use it for the top add
     public void add(int index, int value) {
+        // Error checking!
         if (size >= capacity) {
-            // We need to grow our array
-        } else {
-            // This is much easier
+            this.growArray();
         }
+        for (int i = size; i > index; i--) {
+            array[i] = array[i - 1];
+        }
+        array[index] = value;
+        size++;
     }
 
     public void clear() {
-
+        size = 0;
     }
 
     public boolean contains(int value) {
-        return false;
+        int i = 0;
+        boolean found = false;
+        while (!found && i < size) {
+            found = array[i] == value;
+            i++;
+        }
+        return found;
     }
 
     public int get(int index) {
-        return -1;
+        // ERROR checking!
+        return array[index];
     }
 
     public void remove(int index) {
