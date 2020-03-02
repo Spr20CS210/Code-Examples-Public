@@ -1,11 +1,16 @@
-package midterm1;
+package midterm2;
 
 //           Subclass            Superclass
 public class Salesperson extends Employee {
 
+    public enum State {
+        AZ, UT, TX, CO, CA, NM, FL
+    }
+
     private static final double COMMISSION = 0.10;
 
     private double salesAmount;
+    private State territory;
 
     public Salesperson(String name, double salary, double salesAmount) {
         // 'super' gives a reference to the super class.
@@ -16,6 +21,20 @@ public class Salesperson extends Employee {
          * are in
          */
         this.salesAmount = salesAmount;
+        this.territory = State.AZ;
+    }
+
+    public Salesperson(String name, double salary, double salesAmount,
+            State state) {
+        // 'super' gives a reference to the super class.
+        super(name, salary);
+
+        /*
+         * 'this' gives a reference to the instance of the class that you
+         * are in
+         */
+        this.salesAmount = salesAmount;
+        this.territory = state;
     }
 
     public double getSalary() {

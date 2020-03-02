@@ -1,11 +1,12 @@
-package midterm1;
+package midterm2;
 
 public class E08Company {
 
     public static void main(String[] args) {
         Employee susan = new Employee("Susan", 60000);
 
-        Salesperson daniel = new Salesperson("Daniel", 50000, 80000);
+        Salesperson daniel = new Salesperson("Daniel", 50000, 80000,
+                Salesperson.State.FL);
 
         /*
          * An example of polymorphism.

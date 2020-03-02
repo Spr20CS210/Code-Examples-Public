@@ -1,4 +1,4 @@
-package midterm1;
+package midterm2;
 
 /*
  * A class used to test our E07Static class.
