@@ -27,7 +27,7 @@ public class MyArrayList {
         // Double the size of my array
         int[] newArray = new int[capacity * 2];
         capacity *= 2;
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < size; i++) {
             newArray[i] = array[i];
         }
         array = newArray;
@@ -55,13 +55,12 @@ public class MyArrayList {
     }
 
     public boolean contains(int value) {
-        int i = 0;
-        boolean found = false;
-        while (!found && i < size) {
-            found = array[i] == value;
-            i++;
+        for (int i = 0; i < size; i++) {
+            if (array[i] == value) {
+                return true;
+            }
         }
-        return found;
+        return false;
     }
 
     public int get(int index) {
@@ -70,7 +69,11 @@ public class MyArrayList {
     }
 
     public void remove(int index) {
-
+        // ERROR checking!
+        for (int i = index; i < size - 1; i++) {
+            array[i] = array[i + 1];
+        }
+        size--;
     }
 
     public int size() {
@@ -82,11 +85,30 @@ public class MyArrayList {
     }
 
     public String toString() {
-        return "";
+        String result = "[";
+        for (int i = 0; i < size; i++) {
+            result += " " + array[i] + " ";
+        }
+        result += "]";
+        return result;
     }
 
     public boolean equals(Object o) {
-        return false;
+        if (o instanceof MyArrayList) {
+            MyArrayList other = (MyArrayList) o;
+            if (this.size == other.size) {
+                for (int i = 0; i < this.size; i++) {
+                    if (array[i] != other.array[i]) {
+                        return false;
+                    }
+                }
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
 }
