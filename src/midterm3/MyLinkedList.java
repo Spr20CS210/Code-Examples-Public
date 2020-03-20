@@ -1,4 +1,4 @@
-package midterm2;
+package midterm3;
 
 public class MyLinkedList {
 

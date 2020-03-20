@@ -1,4 +1,4 @@
-package midterm2;
+package midterm3;
 
 public class ListTester {
 
@@ -7,6 +7,7 @@ public class ListTester {
         list.add(67);
         list.add(42);
         System.out.println(list);
+        list.remove(0);
     }
 
 }
