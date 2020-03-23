@@ -1,106 +1,132 @@
 package midterm3;
 
-public class MyLinkedList {
+public class MyLinkedList<E> implements MyList<E> {
 
-    private Node front;
-    private int size;
+    private ListNode<E> front;
 
     public MyLinkedList() {
         front = null;
-        size = 0;
     }
 
-    public void add(int value) {
-        Node newNode = new Node(value, null);
+    public void add(E value) {
         if (front == null) {
-            front = newNode;
+            front = new ListNode<E>(value);
         } else {
-            Node curr = front;
-            while (curr.next != null) {
-                curr = curr.next;
+            ListNode<E> current = front;
+            while (current.next != null) {
+                current = current.next;
             }
-            curr.next = newNode;
+            current.next = new ListNode<E>(value);
         }
-        size += 1;
     }
 
-    public void add(int index, int value) {
+    public void add(int index, E value) {
         if (index == 0) {
-            Node newNode = new Node(value, front);
-            front = newNode;
+            front = new ListNode<E>(value, front);
         } else {
-            int count = 0;
-            Node curr = front;
-            while (curr.next != null && count < index - 1) {
-                curr = curr.next;
-                count += 1;
+            ListNode<E> current = front;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
             }
-            Node newNode = new Node(value, curr.next);
-            curr.next = newNode;
+            ListNode<E> temp = new ListNode<E>(value, current.next);
+            current.next = temp;
         }
-        size += 1;
     }
 
-    public void clear() {
-        front = null;
-        size = 0;
+    public void set(int index, E value) {
+        ListNode<E> current = goTo(index);
+        current.data = value;
     }
 
-    public boolean contains(int value) {
+    public int indexOf(E value) {
+        int index = 0;
+        ListNode<E> current = front;
+        while (current != null) {
+            if (current.data.equals(value)) {
+                return index;
+            }
+            index++;
+            current = current.next;
+        }
+        return -1;
     }
 
-    public int get(int index) {
+    public E get(int index) {
+        ListNode<E> current = front;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.data;
     }
 
-    public void remove(int index) {
+    public String toString() {
+        if (front == null) {
+            return "[]";
+        } else {
+            String result = "[" + front.data;
+            ListNode<E> current = front.next;
+            while (current != null) {
+                result += ", " + current.data;
+                current = current.next;
+            }
+            result += "]";
+            return result;
+        }
     }
 
     public int size() {
+        ListNode<E> current = front;
+        int size = 0;
+        while (current != null) {
+            size++;
+            current = current.next;
+        }
         return size;
     }
 
     public boolean isEmpty() {
-        return size == 0;
+        return front == null;
     }
 
-    public String toString() {
-
-    }
-
-    /*
-     * This method is made harder because we have not implemented
-     * get. Once get is implemented, the below can be made much
-     * cleaner.
-     */
-    public boolean equals(Object o) {
-        if (o instanceof MyLinkedList) {
-            MyLinkedList other = (MyLinkedList) o;
-            if (this.size != other.size) {
-                return false;
-            }
-            Node thisCurr = front;
-            Node otherCurr = other.front;
-            while (thisCurr != null && otherCurr != null) {
-                if (thisCurr.data != otherCurr.data) {
-                    return false;
-                }
-                thisCurr = thisCurr.next;
-                otherCurr = otherCurr.next;
-            }
-            return true;
+    public void remove(int index) {
+        if (index == 0) {
+            front = front.next;
         } else {
-            return false;
+            ListNode<E> current = front;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+            current.next = current.next.next;
         }
     }
 
-    private static class Node {
-        int data;
-        Node next;
+    private ListNode<E> goTo(int index) {
+        ListNode<E> current = front;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current;
+    }
 
-        public Node(int data, Node next) {
+    private class ListNode<E> {
+        E data;
+        ListNode<E> next;
+
+        // Creates a terminal ListNode containing null as data.
+        public ListNode() {
+            this(null, null);
+        }
+
+        // Creates a terminal ListNode with the specified data.
+        public ListNode(E data) {
+            this(data, null);
+        }
+
+        // Creates a ListNode with the specified data and next node.
+        public ListNode(E data, ListNode<E> next) {
             this.data = data;
             this.next = next;
         }
     }
-
 }
+

@@ -6,8 +6,13 @@ public class ListTester {
         MyArrayList list = new MyArrayList();
         list.add(67);
         list.add(42);
-        System.out.println(list);
         list.remove(0);
+
+        MyLinkedList<String> linkedList = new MyLinkedList<>();
+        linkedList.add("CS210");
+        linkedList.add("Social Distance");
+        System.out.println(linkedList);
+
     }
 
 }
