@@ -20,7 +20,7 @@ public class E24DiceSum {
             if (sum == 0) {
                 System.out.println(chosen);
             }
-        } else { // Recursive Case
+        } else if (numDie * 1 <= sum && sum <= numDie * 6) { // Recursive Case
             // For all possible decisions
             for (int i = 1; i <= 6; i++) {
                 // Choose
